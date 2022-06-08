@@ -1,0 +1,22 @@
+paho-mqtt
+
+# Utility
+pyaml-env
+
+# Test
+pytest
+pytest-html
+
+# perf test
+locust
+locust-plugins
+
+# Guideline Enforcement
+pylint
+flake8
+flake8-html
+
+# Camera
+opencv-python
+matplotlib
+pyzbar

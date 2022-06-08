@@ -1,0 +1,35 @@
+mqtt:
+  host: !ENV ${MQTT_HOST}
+  port: !ENV ${MQTT_PORT}
+  qos: 2
+  keep_alive: 60
+client_lock:
+  name: Smart Door Lock
+  user: !ENV ${CLIENT_LOCK_USER}
+  password: !ENV ${CLIENT_LOCK_PASSWORD}
+  subscribe:
+    controller: !ENV 'device/${CONTROLLER_USER}/order/${CLIENT_LOCK_USER}'
+  publish:
+    controller: !ENV 'device/${CLIENT_LOCK_USER}/message/${CONTROLLER_USER}'
+client_camera:
+  name: Security/Scan Camera
+  user: !ENV ${CLIENT_CAMERA_USER}
+  password: !ENV ${CLIENT_CAMERA_PASSWORD}
+  subscribe:
+    controller: !ENV 'device/${CONTROLLER_USER}/order/${CLIENT_CAMERA_USER}'
+  publish:
+    controller: !ENV 'device/${CLIENT_CAMERA_USER}/message/${CONTROLLER_USER}'
+  vid_cap: 0 # Change to 1, 2, 3... as necessary
+controller:
+  name: IoT Controller
+  user: !ENV ${CONTROLLER_USER}
+  password: !ENV ${CONTROLLER_PASSWORD}
+  subscribe:
+    lock: !ENV 'device/${CLIENT_LOCK_USER}/message/${CONTROLLER_USER}'
+    camera: !ENV 'device/${CLIENT_CAMERA_USER}/message/${CONTROLLER_USER}'
+  publish:
+    lock: !ENV 'device/${CONTROLLER_USER}/order/${CLIENT_LOCK_USER}'
+    camera: !ENV 'device/${CONTROLLER_USER}/order/${CLIENT_CAMERA_USER}'
+qr:
+  code:
+    - 589SD463215SW657asd3321ad123ADGA
